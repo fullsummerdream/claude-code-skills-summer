@@ -52,22 +52,16 @@ class ProviderConfig(BaseModel):
 
     @model_validator(mode="after")
     def _expand_env_and_check_key(self) -> "ProviderConfig":
-        unresolved = []
         if self.api_key:
             self.api_key = _expand_env(self.api_key)
-            # Detect placeholders that couldn't be resolved — the
-            # matching env var is not set. Force the check below.
+            # If a ${VAR} placeholder couldn't be resolved, the provider
+            # is simply not configured yet. Mark it as optional so it
+            # doesn't block other providers from loading.
             unresolved = _ENV_RE.findall(self.api_key)
             if unresolved:
                 self.api_key = None
+                self.requires_api_key = False
         if self.requires_api_key and not self.api_key:
-            if unresolved:
-                vars_list = ", ".join(f"${{{v}}}" for v in unresolved)
-                raise ValueError(
-                    f"api_key placeholder(s) not resolved: {vars_list}. "
-                    f"Set the matching environment variable(s) or edit "
-                    f"config.yaml directly."
-                )
             raise ValueError(
                 "api_key is required (set in config.yaml or via ${ENV_VAR})"
             )

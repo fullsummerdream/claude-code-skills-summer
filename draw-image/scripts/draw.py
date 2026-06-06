@@ -85,6 +85,8 @@ def main() -> int:
     parser.add_argument("--max-images", type=int, default=None,
                         help="Max images in a group (with --sequential)")
     parser.add_argument("--no-watermark", action="store_true", help="Disable watermark")
+    parser.add_argument("--web-search", action="store_true",
+                        help="Enable web search before generating (volcengine only)")
     parser.add_argument("--stream", action="store_true",
                         help="Stream images as they generate (requires aiohttp)")
     parser.add_argument("--save-dir", default=None, help="Override save directory")
@@ -142,6 +144,7 @@ def _run_generate(args) -> int:
         "sequential": args.sequential,
         "max_images": args.max_images,
         "n": args.n,
+        "web_search": args.web_search,
     }
     if args.output_format:
         kwargs["output_format"] = args.output_format
