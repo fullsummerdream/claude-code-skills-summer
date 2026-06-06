@@ -1,0 +1,45 @@
+# draw-image skill — provider configuration (TEMPLATE — copy to config.yaml)
+# Copy this file to `config.yaml` and fill in your real API keys.
+# The actual `config.yaml` is in .gitignore and will never be committed.
+
+# Global default: which provider to use when --provider is not specified.
+default_provider: volcengine
+
+# Optional global save directory (overridden per-provider if they set save_dir).
+# save_dir: ~/Pictures/draw-image
+
+providers:
+
+  # ---- Volcengine ARK (Doubao-Seedream-5.0-lite) ----
+  volcengine:
+    type: volcengine
+    base_url: https://ark.cn-beijing.volces.com/api/v3
+    api_key: ${ARK_API_KEY}                  # <-- REPLACE HERE (or set env var)
+    model: doubao-seedream-5-0-260128
+    default_size: 2048x2048
+    output_format: jpeg
+    # save_dir: ~/Pictures/draw-image
+
+  # ---- OpenAI (gpt-image-1 / dall-e-3) ----
+  openai:
+    type: openai-compatible
+    base_url: https://api.openai.com/v1
+    api_key: ${OPENAI_API_KEY}               # <-- REPLACE HERE
+    model: gpt-image-1
+    default_size: 1024x1024
+    output_format: png
+
+  # ---- Aliyun Bailian (DashScope, qwen-image) ----
+  aliyun-bailian:
+    type: aliyun-bailian
+    base_url: https://dashscope.aliyuncs.com/api/v1
+    api_key: ${ALIYUN_BAILIAN_API_KEY}       # <-- REPLACE HERE
+    model: qwen-image-plus
+    default_size: 1024x1024
+    output_format: png
+    multi_image: true    # DashScope convention: always send image as a list
+
+  # ---- Adding more providers ----
+  # Drop a new block here. For most OpenAI-compatible services, the
+  # `type: openai-compatible` template above is enough. If you have a
+  # different API shape, see references/adding-a-provider.md.
