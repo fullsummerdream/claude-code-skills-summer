@@ -1,5 +1,7 @@
 # Claude Code Skills
 
+> **中文用户请阅读 [README_zh.md](README_zh.md)（简体中文）。**
+
 Personal collection of Claude Code skills. Each subdirectory is an
 independent skill — copy it to `~/.claude/skills/` to install.
 
