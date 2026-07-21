@@ -10,6 +10,7 @@ independent skill — copy it to `~/.claude/skills/` to install.
 | Skill | Description | Docs |
 |---|---|---|
 | [draw-image](draw-image/) | AI image generation via volcengine / OpenAI / Aliyun Bailian / any OpenAI-compatible API | [English](draw-image/README.md) · [中文](draw-image/README_zh.md) |
+| [style-craft](style-craft/) | Writing-style workshop: genre/scenario style packs, style extraction (manual + auto), style audit & concision | [English](style-craft/README.md) · [中文](style-craft/README_zh.md) |
 
 ## Install a skill
 

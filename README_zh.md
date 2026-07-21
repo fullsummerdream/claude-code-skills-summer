@@ -8,6 +8,7 @@
 | 技能 | 简介 | 文档 |
 |---|---|---|
 | [draw-image](draw-image/) | AI 图片生成，支持火山方舟 / OpenAI / 阿里云百炼 / 任意 OpenAI 兼容接口 | [English](draw-image/README.md) · [中文](draw-image/README_zh.md) |
+| [style-craft](style-craft/) | 文风工坊：体裁/场景文风包指导写作、文风提炼（方法论 + 自动学习）、文风审核与精简 | [English](style-craft/README.md) · [中文](style-craft/README_zh.md) |
 
 ## 安装方式
 
